@@ -35,7 +35,11 @@ volumes:
     external: true
 ```
 
-### Sample of Nginx (Nginx also a Docker container) and traffic comes from Cloudflare DNS
+Run it with `docker compose up -d`
+
+### Sample of Nginx
+
+Nginx also a container and traffic comes from Cloudflare DNS.
 
 ```
 server {
