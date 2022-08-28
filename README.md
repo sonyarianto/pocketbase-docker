@@ -79,7 +79,7 @@ Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for deta
 
 ## Sample of Nginx (reverse proxy use case)
 
-I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS.
+I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS. As you can see the Pocketbase is on subdomain pocketbase.xxx.xxx and the `proxy_pass` will point to Pocketbase container (`be-pocketbase` in this case).
 
 ```
 server {
