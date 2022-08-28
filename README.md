@@ -4,6 +4,13 @@
 
 Dockerized Pocketbase, based on https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile and https://github.com/bscott/pocketbase-docker.
 
+## Notes
+
+- Read the `Dockerfile`.
+- Pocketbase expose port 8090 on container.
+- Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version.
+- This example is just for own personal use case that using Pocketbase as container, on a sub domain, I am using Nginx container to do reverse proxy and I am using Cloudflare DNS.
+
 ## Sample of Docker Compose
 
 ```
