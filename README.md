@@ -21,7 +21,9 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 - Nginx setup is connect to Pocketbase container.
 - My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect be-pocketbase-volume` for details.
 
-## Docker Compose (for my scenario above, only Pocketbase part)
+## Docker Compose (for my scenario, only the Pocketbase part)
+
+I called the container `be-pocketbase`, the `be-` means `back-end`, just for my personal convention.
 
 ```
 services:
@@ -47,7 +49,7 @@ volumes:
 
 Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
 
-## Docker Compose (typical scenario)
+## Docker Compose (typical scenario, for general purpose)
 
 This is for you that need to quickly spin up Pocketbase and run on localhost.
 
@@ -77,7 +79,7 @@ volumes:
 
 Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
 
-## Sample of Nginx (reverse proxy use case)
+## Nginx config (my scenario, reverse proxy use case)
 
 I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS. As you can see the Pocketbase is on subdomain pocketbase.xxx.xxx and the `proxy_pass` will point to Pocketbase container (`be-pocketbase` in this case).
 
