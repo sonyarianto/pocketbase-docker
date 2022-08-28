@@ -22,11 +22,11 @@ services:
     volumes:
       - be-pocketbase-volume:/app/pocketbase/pb_data
     networks:
-      - infra-net
+      - my-network
 
 networks:
-  infra-net:
-    name: infra-net
+  my-network:
+    name: my-network
     external: true
 
 volumes:
