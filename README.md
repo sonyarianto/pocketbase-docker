@@ -39,7 +39,7 @@ Run it with `docker compose up -d`
 
 ### Sample of Nginx
 
-Nginx also a container and traffic comes from Cloudflare DNS.
+I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS.
 
 ```
 server {
