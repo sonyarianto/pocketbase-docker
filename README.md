@@ -69,3 +69,6 @@ server {
 }
 ```
 
+Until this point we already can run Pocketbase on https://pocketbase.xxx.xxx or the admin page at https://pocketbase.xxx.xxx/_/
+
+Thank you for the great piece of software called [Pocketbase](https://github.com/pocketbase/pocketbase) created by https://github.com/ganigeorgiev.
