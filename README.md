@@ -49,6 +49,8 @@ Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for deta
 
 ## Docker Compose (typical scenario)
 
+This is for you that need to quickly spin up Pocketbase and run on localhost.
+
 ```
 services:
   be-pocketbase:
