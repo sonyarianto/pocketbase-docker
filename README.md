@@ -2,7 +2,7 @@
 
 ## What is this?
 
-Dockerized Pocketbase, based on https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile and https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile. Just for my use case scenario.
+Dockerized Pocketbase, based on https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile and https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile. Just for my personal use case scenario.
 
 ## Notes
 
