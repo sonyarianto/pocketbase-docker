@@ -9,7 +9,17 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 - Read the `Dockerfile`.
 - Pocketbase expose port 8090 on container.
 - Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See at https://github.com/pocketbase/pocketbase/releases.
-- This example is just for own personal use case that using Pocketbase as container, on a sub domain, I am using Nginx container to do reverse proxy and I am using Cloudflare DNS.
+
+## My scenario
+
+- I am using Nginx as a container.
+- I am using Pocketbase as a container.
+- I am using Cloudflare DNS.
+- My Pocketbase is run on a subdomain (pocketbase.xxx.xxx).
+- I setup Nginx as reverse proxy to Pocketbase container.
+- My Pocketbase container just exposed the port internally, not to host.
+- Nginx setup is connect to Pocketbase container.
+- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect be-pocketbase-volume` for details.
 
 ## Sample of Docker Compose
 
@@ -35,7 +45,7 @@ volumes:
     external: true
 ```
 
-Run it with `docker compose up -d`
+Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for details.
 
 ### Sample of Nginx (reverse proxy use case)
 
