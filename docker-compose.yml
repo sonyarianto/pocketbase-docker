@@ -13,9 +13,7 @@ services:
 networks:
   my-network:
     name: my-network
-    external: true
 
 volumes:
   pocketbase-volume:
     name: pocketbase-volume
-    external: true
