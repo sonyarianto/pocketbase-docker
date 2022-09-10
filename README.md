@@ -23,16 +23,14 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 
 ## Docker Compose (for my scenario, only the Pocketbase part)
 
-I called the container `be-pocketbase`, the `be-` means `back-end`, just for my personal convention.
-
 ```
 services:
-  be-pocketbase:
-    container_name: be-pocketbase
+  pocketbase:
+    container_name: pocketbase
     build: .
-    image: be-pocketbase:latest
+    image: pocketbase:latest
     volumes:
-      - be-pocketbase-volume:/app/pocketbase/pb_data
+      - pocketbase-volume:/app/pocketbase/pb_data
     networks:
       - my-network
 
@@ -42,12 +40,12 @@ networks:
     external: true
 
 volumes:
-  be-pocketbase-volume:
-    name: be-pocketbase-volume
+  pocketbase-volume:
+    name: pocketbase-volume
     external: true
 ```
 
-Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
+Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
 
 ## Docker Compose (typical scenario, for general purpose)
 
@@ -55,12 +53,12 @@ This is for you that need to quickly spin up Pocketbase and run on localhost.
 
 ```
 services:
-  be-pocketbase:
-    container_name: be-pocketbase
+  pocketbase:
+    container_name: pocketbase
     build: .
-    image: be-pocketbase:latest
+    image: pocketbase:latest
     volumes:
-      - be-pocketbase-volume:/app/pocketbase/pb_data
+      - pocketbase-volume:/app/pocketbase/pb_data
     networks:
       - my-network
     ports:
@@ -72,12 +70,12 @@ networks:
     external: true
 
 volumes:
-  be-pocketbase-volume:
-    name: be-pocketbase-volume
+  pocketbase-volume:
+    name: pocketbase-volume
     external: true
 ```
 
-Run it with `docker compose up -d`. Just `docker inspect be-pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
+Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
 
 ## Nginx config (my scenario, reverse proxy use case)
 
@@ -103,7 +101,7 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
 
-    proxy_pass http://be-pocketbase:8090;
+    proxy_pass http://pocketbase:8090;
   }
 
   ssl_certificate /just_example_of_selfsigned.crt;
