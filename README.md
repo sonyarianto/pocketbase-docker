@@ -21,32 +21,6 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 - Nginx setup is connect to Pocketbase container.
 - My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
 
-## Docker Compose (for my scenario, only the Pocketbase part)
-
-```
-services:
-  pocketbase:
-    container_name: pocketbase
-    build: .
-    image: pocketbase:latest
-    volumes:
-      - pocketbase-volume:/app/pocketbase/pb_data
-    networks:
-      - my-network
-
-networks:
-  my-network:
-    name: my-network
-    external: true
-
-volumes:
-  pocketbase-volume:
-    name: pocketbase-volume
-    external: true
-```
-
-Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
-
 ## Docker Compose (typical scenario, for general purpose)
 
 This is for you that need to quickly spin up Pocketbase and run on localhost.
@@ -76,6 +50,32 @@ volumes:
 ```
 
 Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
+
+## Docker Compose (for my scenario, only the Pocketbase part)
+
+```
+services:
+  pocketbase:
+    container_name: pocketbase
+    build: .
+    image: pocketbase:latest
+    volumes:
+      - pocketbase-volume:/app/pocketbase/pb_data
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    name: my-network
+    external: true
+
+volumes:
+  pocketbase-volume:
+    name: pocketbase-volume
+    external: true
+```
+
+Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
 
 ## Nginx config (my scenario, reverse proxy use case)
 
