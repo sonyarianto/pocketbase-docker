@@ -1,1 +1,21 @@
+services:
+  pocketbase:
+    container_name: pocketbase
+    build: .
+    image: pocketbase:latest
+    volumes:
+      - pocketbase-volume:/app/pocketbase/pb_data
+    networks:
+      - my-network
+    ports:
+      - "8090:8090"
 
+networks:
+  my-network:
+    name: my-network
+    external: true
+
+volumes:
+  pocketbase-volume:
+    name: pocketbase-volume
+    external: true
