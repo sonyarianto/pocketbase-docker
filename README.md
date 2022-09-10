@@ -19,7 +19,7 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 - I setup Nginx as reverse proxy to Pocketbase container.
 - My Pocketbase container just exposed the port internally, not to host.
 - Nginx setup is connect to Pocketbase container.
-- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect be-pocketbase-volume` for details.
+- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
 
 ## Docker Compose (for my scenario, only the Pocketbase part)
 
@@ -79,7 +79,7 @@ Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details
 
 ## Nginx config (my scenario, reverse proxy use case)
 
-I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS. As you can see the Pocketbase is on subdomain pocketbase.xxx.xxx and the `proxy_pass` will point to Pocketbase container (`be-pocketbase` in this case).
+I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS. As you can see the Pocketbase is on subdomain pocketbase.xxx.xxx and the `proxy_pass` will point to Pocketbase container (`pocketbase` in this case).
 
 ```
 server {
