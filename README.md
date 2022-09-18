@@ -42,14 +42,14 @@ Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details
 
 ## My scenario
 
-- I am using Nginx as a container.
-- I am using Pocketbase as a container.
-- I am using Cloudflare DNS.
-- My Pocketbase is run on a subdomain (pocketbase.xxx.xxx).
-- I setup Nginx as reverse proxy to Pocketbase container.
-- My Pocketbase container just exposed the port internally, not to host.
-- Nginx setup is connect to Pocketbase container.
-- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
+- I have dedicated hosting with public IP address. This dedicated hosting will run all of my Docker containers.
+- I have Cloudflare DNS to manage my domain.
+- I already pointing subdomain pocketbase.xxxx.xxx to my public IP.
+- I setup Nginx as a container
+- I setup Pocketbase as a container.
+- I setup server_name on Nginx and do reverse proxy to Pocketbase container.
+- Pocketbase container exposed the port internally, not to host.
+- Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
 
 ## Docker Compose (for my scenario, only the Pocketbase part)
 
@@ -78,8 +78,6 @@ volumes:
 Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
 
 ## Nginx config (my scenario, reverse proxy use case)
-
-I want to run Pocketbase on a subdomain called https://pocketbase.xxxx.xxx. I am using Cloudflare DNS. I have dedicated server with public IP. I already pointing from Cloudflare DNS to my public IP. I need to use Docker container to run everything. I have to setup reverse proxy using Nginx (container).
 
 ```
 server {
