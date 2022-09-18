@@ -10,17 +10,6 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 - Pocketbase expose port 8090 on container.
 - Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See at https://github.com/pocketbase/pocketbase/releases.
 
-## My scenario
-
-- I am using Nginx as a container.
-- I am using Pocketbase as a container.
-- I am using Cloudflare DNS.
-- My Pocketbase is run on a subdomain (pocketbase.xxx.xxx).
-- I setup Nginx as reverse proxy to Pocketbase container.
-- My Pocketbase container just exposed the port internally, not to host.
-- Nginx setup is connect to Pocketbase container.
-- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
-
 ## Docker Compose (typical scenario, for general purpose)
 
 This is for you that need to quickly spin up Pocketbase and run on localhost.
@@ -50,6 +39,17 @@ volumes:
 ```
 
 Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
+
+## My scenario
+
+- I am using Nginx as a container.
+- I am using Pocketbase as a container.
+- I am using Cloudflare DNS.
+- My Pocketbase is run on a subdomain (pocketbase.xxx.xxx).
+- I setup Nginx as reverse proxy to Pocketbase container.
+- My Pocketbase container just exposed the port internally, not to host.
+- Nginx setup is connect to Pocketbase container.
+- My Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
 
 ## Docker Compose (for my scenario, only the Pocketbase part)
 
