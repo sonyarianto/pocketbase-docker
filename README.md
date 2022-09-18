@@ -7,7 +7,7 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 ## Notes
 
 - Read the `Dockerfile`.
-- Pocketbase expose port 8090 on container.
+- Pocketbase expose port `8090` on container.
 - Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See at https://github.com/pocketbase/pocketbase/releases.
 
 ## Docker Compose (typical scenario, for general purpose)
