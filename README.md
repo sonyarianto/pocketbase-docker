@@ -12,7 +12,7 @@ Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https
 
 ## Docker Compose (typical scenario, for general purpose)
 
-This is for you that need to quickly spin up Pocketbase and run on localhost.
+This is for you that need to quickly spin up Pocketbase and run on localhost. You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
 
 ```
 services:
@@ -79,7 +79,7 @@ Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details
 
 ## Nginx config (my scenario, reverse proxy use case)
 
-I setup reverse proxy using Nginx. Nginx is also a container and traffic comes from Cloudflare DNS. As you can see the Pocketbase is on subdomain pocketbase.xxx.xxx and the `proxy_pass` will point to Pocketbase container (`pocketbase` in this case).
+I want to run Pocketbase on a subdomain called https://pocketbase.xxxx.xxx. I am using Cloudflare DNS. I have dedicated server with public IP. I already pointing from Cloudflare DNS to my public IP. I need to use Docker container to run everything. I have to setup reverse proxy using Nginx (container).
 
 ```
 server {
@@ -89,7 +89,7 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name pocketbase.xxx.xxx; # a subdomain
+  server_name pocketbase.xxxx.xxx; # a subdomain
 
   location / {
     proxy_set_header Connection '';
