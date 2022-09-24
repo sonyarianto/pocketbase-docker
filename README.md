@@ -75,7 +75,7 @@ volumes:
     external: true
 ```
 
-Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page.
+Run it with `docker compose up -d`. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page. Just `docker inspect pocketbase` for details.
 
 ## Nginx config (my scenario, reverse proxy use case)
 
