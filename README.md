@@ -38,7 +38,7 @@ volumes:
     external: true
 ```
 
-Run it with `docker compose up -d`. Just `docker inspect pocketbase` for details. At this point I already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page.
+Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page. Just `docker inspect pocketbase` for details.
 
 ## My scenario
 
