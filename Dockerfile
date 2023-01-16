@@ -12,7 +12,7 @@ RUN apk add --no-cache \
     zip \
     zlib-dev
 
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /app/pocketbase/pocketbase.zip
+ADD https://github.com/pocketbase/pocketbase/releases/download/v0.11.2/pocketbase_0.11.2_linux_amd64.zip /app/pocketbase/pocketbase.zip
 RUN unzip /app/pocketbase/pocketbase.zip -d /app/pocketbase
 RUN chmod +x /app/pocketbase/pocketbase
 RUN rm /app/pocketbase/pocketbase.zip
