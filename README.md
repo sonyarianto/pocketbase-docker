@@ -2,13 +2,18 @@
 
 ## What is this?
 
-Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile and https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile. Just for my personal use case scenario.
+Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on:
+
+- https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
+- https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile.
+
+Basically it just for my personal use case scenario.
 
 ## Notes
 
 - Read the `Dockerfile`.
 - Pocketbase expose port `8090` on container.
-- Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See at https://github.com/pocketbase/pocketbase/releases.
+- Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
 ## Docker Compose (typical scenario, for general purpose)
 
@@ -30,17 +35,15 @@ services:
 networks:
   my-network:
     name: my-network
-    external: true
 
 volumes:
   pocketbase-volume:
     name: pocketbase-volume
-    external: true
 ```
 
-Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page. Just `docker inspect pocketbase` for details.
+Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page. Just run `docker inspect pocketbase` for more details.
 
-## My scenario
+## My scenario (my prefered flow)
 
 - I have dedicated hosting with public IP address. This dedicated hosting will run all of my Docker containers.
 - I have Cloudflare DNS to manage my domain.
@@ -67,15 +70,13 @@ services:
 networks:
   my-network:
     name: my-network
-    external: true
 
 volumes:
   pocketbase-volume:
     name: pocketbase-volume
-    external: true
 ```
 
-Run it with `docker compose up -d`. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page. Just `docker inspect pocketbase` for details.
+Run it with `docker compose up -d`. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page. Just `docker inspect pocketbase` for more details.
 
 ## Nginx config (my scenario, reverse proxy use case)
 
