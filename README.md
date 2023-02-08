@@ -109,3 +109,7 @@ server {
 ```
 
 Thank you for the great piece of software called [Pocketbase](https://github.com/pocketbase/pocketbase) created by https://github.com/ganigeorgiev.
+
+License
+
+MIT
