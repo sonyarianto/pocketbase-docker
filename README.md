@@ -113,3 +113,5 @@ Thank you for the great piece of software called [Pocketbase](https://github.com
 ## License
 
 MIT
+
+Maintained by Sony Arianto Kurniawan <<sony@sony-ak.com>> and contributors.
