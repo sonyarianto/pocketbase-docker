@@ -1,7 +1,5 @@
 # pocketbase-docker
 
-## What is this?
-
 Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on:
 
 - https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
