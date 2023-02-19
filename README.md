@@ -1,17 +1,19 @@
 # pocketbase-docker
 
-Dockerized Pocketbase (https://github.com/pocketbase/pocketbase), based on:
+Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), based on:
 
 - https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
 - https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile.
 
 Basically it just for my personal use case scenario.
 
+Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who create this great pieces of software.
+
 ## Notes
 
-- Read the `Dockerfile`.
-- Pocketbase expose port `8090` on container.
-- Please update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
+- Read the `Dockerfile`. That's the core file to build the image.
+- Pocketbase will expose port `8090` inside container.
+- Update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
 ## Docker Compose (typical scenario, for general purpose)
 
@@ -105,8 +107,6 @@ server {
   ssl_certificate_key /just_example_of_selfsigned.key;
 }
 ```
-
-Thank you for the great piece of software called [Pocketbase](https://github.com/pocketbase/pocketbase) created by https://github.com/ganigeorgiev.
 
 ## License
 
