@@ -7,7 +7,7 @@ Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), based on:
 
 Basically it just for my personal use case scenario.
 
-Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who create this great pieces of software.
+Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great pieces of software.
 
 ## Notes
 
