@@ -3,7 +3,7 @@
 FROM alpine:latest
 LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
 
-ARG POCKETBASE_VERSION=0.12.3
+ARG POCKETBASE_VERSION=0.13.0
 
 RUN apk add --no-cache \
     ca-certificates \
