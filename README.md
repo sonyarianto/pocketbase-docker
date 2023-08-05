@@ -21,13 +21,16 @@ Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketba
 This is for you that need to quickly spin up Pocketbase and run on localhost. You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
 
 ```
+version: '3.8'
+
 services:
   pocketbase:
     container_name: pocketbase
     build: .
     image: pocketbase:latest
     volumes:
-      - pocketbase-volume:/app/pocketbase/pb_data
+      - pocketbase-volume-data:/app/pocketbase/pb_data
+      - pocketbase-volume-migrations:/app/pocketabse/pb_migrations
     networks:
       - my-network
     ports:
@@ -38,8 +41,10 @@ networks:
     name: my-network
 
 volumes:
-  pocketbase-volume:
-    name: pocketbase-volume
+  pocketbase-volume-data:
+    name: pocketbase-volume-data
+  pocketbase-volume-migrations:
+    name: pocketbase-volume-migrations
 ```
 
 Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page. Just run `docker inspect pocketbase` for more details.
