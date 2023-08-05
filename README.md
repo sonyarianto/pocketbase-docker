@@ -3,16 +3,17 @@
 Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), based on:
 
 - https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
-- https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile.
+- https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile
+- https://github.com/muchobien/pocketbase-docker
 
 Basically it just for my personal use case scenario.
 
-Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great pieces of software.
+Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great piece of software.
 
 ## Notes
 
 - Read the `Dockerfile`. That's the core file to build the image.
-- Pocketbase will expose port `8090` inside container.
+- Pocketbase will expose port `8090` inside the container.
 - Update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
 ## Docker Compose (typical scenario, for general purpose)
