@@ -1,6 +1,6 @@
 # pocketbase-docker
 
-Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), based on:
+Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), inspired and based on:
 
 - https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
 - https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile
@@ -90,6 +90,56 @@ server {
   ssl_certificate_key /just_example_of_selfsigned.key; # adjust this with your situation
 }
 ```
+
+At this point you will have Pocketbase on https://api.example.com
+
+Remember https://api.example.com/_/ to access the Admin page and https://api.example.com/api/ is the API endpoint.
+
+## Nginx config (base path scenario, reverse proxy use case)
+
+This scenario will assume you have URL https://api.example.com/ (similar like above) but the Pocketbase will be on the base path called `pocketbase` so the end result will be like https://api.example.com/pocketbase
+
+```
+server {
+  listen 80;
+  listen [::]:80;
+  
+  server_name api.example.com; # adjust this to your domain
+
+  return 301 https://api.example.com$request_uri; # adjust this to your URI
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;
+
+  server_name api.example.com; # adjust this to your domain
+
+  location /pocketbase { # adjust this base path when necessary
+    rewrite /pocketbase/(.*) /$1  break; # adjust this rewrite when necessary
+
+    proxy_set_header Connection '';
+    proxy_http_version 1.1;
+    proxy_read_timeout 180s;
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-By $remote_addr;
+
+    proxy_pass http://pocketbase:8090; # this is pointing to service name on the Docker Compose, adjust it when necessary
+  }
+
+  ssl_certificate /just_example_of_selfsigned.crt; # adjust this with your situation
+  ssl_certificate_key /just_example_of_selfsigned.key; # adjust this with your situation
+}
+```
+
+At this point you will have Pocketbase on https://api.example.com/pocketbase
+
+Remember https://api.example.com/pocketbase/_/ to access the Admin page and https://api.example.com/pocketbase/api/ is the API endpoint.
+
 
 ## License
 
