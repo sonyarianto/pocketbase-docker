@@ -5,8 +5,7 @@ Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), inspired and 
 - https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
 - https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile
 - https://github.com/muchobien/pocketbase-docker
-
-Basically it just for my personal use case scenario.
+- https://github.com/pocketbase/pocketbase/issues/92
 
 Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great piece of software.
 
@@ -32,14 +31,8 @@ services:
     image: pocketbase:latest
     volumes:
       - pocketbase-volume:/app/data
-    networks:
-      - my-network
     ports:
       - "8090:8090"
-
-networks:
-  my-network:
-    name: my-network
 
 volumes:
   pocketbase-volume:
