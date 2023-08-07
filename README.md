@@ -52,17 +52,25 @@ Run `docker inspect pocketbase` for more details.
 
 If you don't want to expose the port, just remove or comment the `ports` section above.
 
-## Nginx config (my scenario, reverse proxy use case)
+## Nginx config (typical scenario, reverse proxy use case)
+
+Let say you have domain `example.com` and you already create subdomain `api.example.com` to server your Pocketbase infrastructure. I assume you already setup the SSL certificate as well.
 
 ```
+server {
+  listen 80;
+  listen [::]:80;
+  
+  server_name api.example.com; # adjust this to your domain
+
+  return 301 https://api.example.com$request_uri; # adjust this to your URI
+}
+
 server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
 
-  listen 80;
-  listen [::]:80;
-
-  server_name pocketbase.xxxx.xxx; # a subdomain
+  server_name api.example.com; # adjust this to your domain
 
   location / {
     proxy_set_header Connection '';
@@ -73,12 +81,13 @@ server {
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-By $remote_addr;
 
-    proxy_pass http://pocketbase:8090;
+    proxy_pass http://pocketbase:8090; # this is pointing to service name on the Docker Compose, adjust it when necessary
   }
 
-  ssl_certificate /just_example_of_selfsigned.crt;
-  ssl_certificate_key /just_example_of_selfsigned.key;
+  ssl_certificate /just_example_of_selfsigned.crt; # adjust this with your situation
+  ssl_certificate_key /just_example_of_selfsigned.key; # adjust this with your situation
 }
 ```
 
