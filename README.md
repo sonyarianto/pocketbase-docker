@@ -62,8 +62,8 @@ server {
 }
 
 server {
-  listen 443 ssl http2;
-  listen [::]:443 ssl http2;
+  listen 443 ssl;
+  listen [::]:443 ssl;
 
   server_name api.example.com; # adjust this to your domain
 
@@ -105,8 +105,8 @@ server {
 }
 
 server {
-  listen 443 ssl http2;
-  listen [::]:443 ssl http2;
+  listen 443 ssl;
+  listen [::]:443 ssl;
 
   server_name api.example.com; # adjust this to your domain
 
