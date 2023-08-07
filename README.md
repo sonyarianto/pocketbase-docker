@@ -29,8 +29,7 @@ services:
     build: .
     image: pocketbase:latest
     volumes:
-      - pocketbase-volume-data:/app/pocketbase/pb_data
-      - pocketbase-volume-migrations:/app/pocketabse/pb_migrations
+      - pocketbase-volume:/app/data
     networks:
       - my-network
     ports:
@@ -41,48 +40,17 @@ networks:
     name: my-network
 
 volumes:
-  pocketbase-volume-data:
-    name: pocketbase-volume-data
-  pocketbase-volume-migrations:
-    name: pocketbase-volume-migrations
-```
-
-Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/ or http://localhost:8090/_/ for the admin page. Just run `docker inspect pocketbase` for more details.
-
-## My scenario (my prefered flow)
-
-- I have dedicated hosting with public IP address. This dedicated hosting will run all of my Docker containers.
-- I have Cloudflare DNS to manage my domain.
-- I already pointing subdomain pocketbase.xxxx.xxx to my public IP.
-- I setup Nginx as a container
-- I setup Pocketbase as a container.
-- I setup server_name on Nginx and do reverse proxy to Pocketbase container.
-- Pocketbase container exposed the port internally, not to host.
-- Pocketbase data saved on Docker volume so it will not gone when container removed. Just `docker inspect pocketbase-volume` for details.
-
-## Docker Compose (for my scenario, only the Pocketbase part)
-
-```
-services:
-  pocketbase:
-    container_name: pocketbase
-    build: .
-    image: pocketbase:latest
-    volumes:
-      - pocketbase-volume:/app/pocketbase/pb_data
-    networks:
-      - my-network
-
-networks:
-  my-network:
-    name: my-network
-
-volumes:
   pocketbase-volume:
     name: pocketbase-volume
 ```
 
-Run it with `docker compose up -d`. At this point I already can run Pocketbase on https://pocketbase.xxx.xxx or https://pocketbase.xxx.xxx/_/ for the admin page. Just `docker inspect pocketbase` for more details.
+Run it with `docker compose up -d`. At this point we already can run Pocketbase on http://localhost:8090/.
+- Admin page go to http://localhost:8090/_/
+- API URI on the http://localhost:8090/api/
+
+Run `docker inspect pocketbase` for more details.
+
+If you don't want to expose the port, just remove or comment the `ports` section above.
 
 ## Nginx config (my scenario, reverse proxy use case)
 
