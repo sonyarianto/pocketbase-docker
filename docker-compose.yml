@@ -6,19 +6,10 @@ services:
     build: .
     image: pocketbase:latest
     volumes:
-      - pocketbase-volume-data:/app/pocketbase/pb_data
-      - pocketbase-volume-migrations:/app/pocketabse/pb_migrations
-    networks:
-      - my-network
+      - pocketbase-volume:/app/data
     ports:
       - "8090:8090"
 
-networks:
-  my-network:
-    name: my-network
-
 volumes:
-  pocketbase-volume-data:
-    name: pocketbase-volume-data
-  pocketbase-volume-migrations:
-    name: pocketbase-volume-migrations
+  pocketbase-volume:
+    name: pocketbase-volume
