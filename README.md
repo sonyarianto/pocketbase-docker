@@ -10,15 +10,17 @@ Basically it just for my personal use case scenario.
 
 Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great piece of software.
 
-## Notes
+## Technical Notes
 
 - Read the `Dockerfile`. That's the core file to build the image.
 - Pocketbase will expose port `8090` inside the container.
+- Pocketbase will use volume called `pocketbase-volume` for data persistent storage.
+- Pocketbase will use `/app/data/pb_data` to store data and `/app/data/pb_public` to store data that public facing to users, such as HTML, CSS, images, JS etc. 
 - Update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
 ## Docker Compose (typical scenario, for general purpose)
 
-This is for you that need to quickly spin up Pocketbase and run on localhost. You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
+This is for you that need to quickly spin up Pocketbase and run on your host (localhost or on cloud). You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
 
 ```
 version: '3.8'
@@ -140,6 +142,9 @@ At this point you will have Pocketbase on https://api.example.com/pocketbase
 
 Remember https://api.example.com/pocketbase/_/ to access the Admin page and https://api.example.com/pocketbase/api/ is the API endpoint.
 
+## Questions
+
+If you still have any question please feel free to write to me on Discussions section above.
 
 ## License
 
