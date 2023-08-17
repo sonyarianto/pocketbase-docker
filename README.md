@@ -17,7 +17,7 @@ Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketba
 - Pocketbase will use `/app/data/pb_data` to store data and `/app/data/pb_public` to store data that public facing to users, such as HTML, CSS, images, JS etc. 
 - Update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
-## Docker Compose (typical scenario, for general purpose)
+## Docker Compose (typical scenario)
 
 This is for you that need to quickly spin up Pocketbase and run on your host (localhost or on cloud). You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
 
