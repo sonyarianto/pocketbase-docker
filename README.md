@@ -47,7 +47,7 @@ Run `docker inspect pocketbase` for more details.
 
 If you don't want to expose the port, just remove or comment the `ports` section above.
 
-## Nginx config (typical scenario, reverse proxy use case)
+## Nginx config (using reverse proxy)
 
 Let say you have domain `example.com` and you already create subdomain `api.example.com` to server your Pocketbase infrastructure. I assume you already setup the SSL certificate as well.
 
@@ -90,9 +90,9 @@ At this point you will have Pocketbase on https://api.example.com
 
 Remember https://api.example.com/_/ to access the Admin page and https://api.example.com/api/ is the API endpoint.
 
-## Nginx config (base path scenario, reverse proxy use case)
+## Nginx config (using reverse proxy and using base path)
 
-This scenario will assume you have URL https://api.example.com/ (similar like above) but the Pocketbase will be on the base path called `pocketbase` so the end result will be like https://api.example.com/pocketbase
+This scenario will assume you have URL https://api.example.com/ (similar like previous Nginx scenario) but the Pocketbase will be on the base path called `pocketbase` so the end result will be like https://api.example.com/pocketbase
 
 ```
 server {
