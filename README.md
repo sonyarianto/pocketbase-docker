@@ -4,7 +4,7 @@ Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase).
 
 ## Technical Notes
 
-The most important file is `Dockerfile` that define the image and later for build the image purpose, and there is `docker-compose.yml` make it easy to run or build with Docker Compose.
+The most important file is `Dockerfile` that define the image and later for build the image purpose, and there is `docker-compose.yml` to make it easy to run or build with Docker Compose.
 
 - Read the `Dockerfile`. That's the core file to build the image.
 - Pocketbase will expose port `8090` inside the container (as defined on `Dockerfile` file).
