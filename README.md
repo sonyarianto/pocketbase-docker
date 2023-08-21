@@ -11,9 +11,11 @@ Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketba
 
 ## Technical Notes
 
+The most important file is `Dockerfile` that define the image and later for build the image purpose, and there is `docker-compose.yml` make it easy to run or build with Docker Compose.
+
 - Read the `Dockerfile`. That's the core file to build the image.
-- Pocketbase will expose port `8090` inside the container.
-- Pocketbase will use volume called `pocketbase-volume` for data persistent storage.
+- Pocketbase will expose port `8090` inside the container (as defined on `Dockerfile` file).
+- Pocketbase will use volume called `pocketbase-volume` for data persistent storage (as defined in `docker-compose.yml`).
 - Pocketbase will use `/app/data/pb_data` to store data and `/app/data/pb_public` to store data that public facing to users, such as HTML, CSS, images, JS etc. 
 - Update `POCKETBASE_VERSION` on `Dockerfile` to the latest version. See the latest version number at at https://github.com/pocketbase/pocketbase/releases. I will try to update the version number as often as I can.
 
