@@ -1,13 +1,6 @@
 # pocketbase-docker
 
-Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase), inspired and based on:
-
-- https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
-- https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile
-- https://github.com/muchobien/pocketbase-docker
-- https://github.com/pocketbase/pocketbase/issues/92
-
-Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great piece of software.
+Dockerized [Pocketbase](https://github.com/pocketbase/pocketbase).
 
 ## Technical Notes
 
@@ -140,6 +133,17 @@ Remember https://api.example.com/pocketbase/_/ to access the Admin page and http
 ## Questions
 
 If you still have any question please feel free to write to me on Discussions section above.
+
+## Credits
+
+Inspired and based on:
+
+- https://github.com/krushiraj/pocketbase-docker/blob/main/Dockerfile
+- https://github.com/bscott/pocketbase-docker/blob/main/Dockerfile
+- https://github.com/muchobien/pocketbase-docker
+- https://github.com/pocketbase/pocketbase/issues/92
+
+Credits to [Gani Georgiev](https://github.com/ganigeorgiev) who created Pocketbase, it's great piece of software.
 
 ## License
 
