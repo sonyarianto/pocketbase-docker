@@ -44,7 +44,7 @@ If you don't want to expose the port to host, just remove or comment the `ports`
 
 ## Nginx config (using reverse proxy)
 
-Let say you have domain `example.com` and you already create subdomain `api.example.com` to server your Pocketbase infrastructure. I assume you already setup the SSL certificate as well.
+Let say you have domain `example.com` and you already create subdomain `api.example.com` to server your Pocketbase infrastructure. I assume you already setup the SSL certificate as well (I am using Cloudflare DNS so SSL is already provided).
 
 ```
 server {
