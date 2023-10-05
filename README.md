@@ -40,7 +40,7 @@ Run it with `docker compose up -d`. At this point we already can run Pocketbase 
 
 Run `docker inspect pocketbase` for more details.
 
-If you don't want to expose the port, just remove or comment the `ports` section above.
+If you don't want to expose the port to host, just remove or comment the `ports` section above.
 
 ## Nginx config (using reverse proxy)
 
