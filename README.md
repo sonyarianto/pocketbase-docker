@@ -14,7 +14,7 @@ The most important file is `Dockerfile` that define the image and later for buil
 
 ## Docker Compose (typical scenario)
 
-This is for you that need to quickly spin up Pocketbase and run on your host (localhost or on cloud). You can adjust it. As you can see, I define `networks` and `volumes` to make data persistent if you stop the container.
+This is for you that need to quickly spin up Pocketbase and run on your host (localhost or on cloud). You can adjust it. As you can see, I define `volumes` to make data persistent if you stop the container.
 
 ```
 version: '3.8'
