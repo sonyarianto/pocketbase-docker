@@ -121,8 +121,8 @@ server {
     proxy_pass http://pocketbase:8090; # this is pointing to service name on the Docker Compose, adjust it when necessary
   }
 
-  ssl_certificate /just_example_of_selfsigned.crt; # adjust this with your situation
-  ssl_certificate_key /just_example_of_selfsigned.key; # adjust this with your situation
+  ssl_certificate /your_path_to_ssl_files/just_example_of_selfsigned.crt; # adjust this with your situation
+  ssl_certificate_key /your_path_to_ssl_files/just_example_of_selfsigned.key; # adjust this with your situation
 }
 ```
 
