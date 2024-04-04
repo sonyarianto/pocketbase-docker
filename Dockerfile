@@ -14,13 +14,21 @@ RUN unzip /tmp/pocketbase.zip -d /tmp/pocketbase
 
 RUN chmod +x /tmp/pocketbase/pocketbase
 
-### Final image
+#############################################
+# Final image
+#############################################
 
 FROM alpine:latest
 LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
 
-COPY --from=builder /tmp/pocketbase /app/pocketbase
+WORKDIR /app/pocketbase
 
-EXPOSE 8090
+COPY --from=builder /tmp/pocketbase .
 
-CMD [ "/app/pocketbase/pocketbase", "serve", "--http=0.0.0.0:8090", "--dir=/app/data/pb_data", "--publicDir=/app/data/pb_public" ]
+ENV DATA_DIR=/app/data/pb_data
+ENV PUBLIC_DIR=/app/data/pb_public
+ENV PORT=8090
+
+EXPOSE ${PORT}
+
+CMD [ "sh", "-c", "./pocketbase serve --http=0.0.0.0:${PORT} --dir=${DATA_DIR} --publicDir=${PUBLIC_DIR}" ]
