@@ -19,7 +19,7 @@ RUN chmod +x /tmp/pocketbase/pocketbase
 #############################################
 
 FROM alpine:latest
-LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
+LABEL maintainer="Sony AK <sony@sony-ak.com>"
 
 WORKDIR /app/pocketbase
 
