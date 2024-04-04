@@ -1,22 +1,25 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:latest
-LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
+FROM alpine:latest AS builder
 
 ARG POCKETBASE_VERSION=0.22.7
 
 RUN apk add --no-cache \
     ca-certificates \
-    unzip \
-    wget \
-    zip \
-    zlib-dev
+    unzip
 
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /app/pocketbase/pocketbase.zip
+ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /tmp/pocketbase.zip
 
-RUN unzip /app/pocketbase/pocketbase.zip -d /app/pocketbase && \
-    chmod +x /app/pocketbase/pocketbase && \
-    rm /app/pocketbase/pocketbase.zip
+RUN unzip /tmp/pocketbase.zip -d /tmp/pocketbase
+
+RUN chmod +x /tmp/pocketbase/pocketbase
+
+### Final image
+
+FROM alpine:latest
+LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
+
+COPY --from=builder /tmp/pocketbase /app/pocketbase
 
 EXPOSE 8090
 
