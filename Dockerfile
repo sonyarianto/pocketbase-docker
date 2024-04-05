@@ -1,23 +1,34 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:latest
-LABEL "maintainer"="Sony AK <sony@sony-ak.com>"
+FROM alpine:latest AS builder
 
 ARG POCKETBASE_VERSION=0.22.7
 
 RUN apk add --no-cache \
     ca-certificates \
-    unzip \
-    wget \
-    zip \
-    zlib-dev
+    unzip
 
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /app/pocketbase/pocketbase.zip
+ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /tmp/pocketbase.zip
 
-RUN unzip /app/pocketbase/pocketbase.zip -d /app/pocketbase && \
-    chmod +x /app/pocketbase/pocketbase && \
-    rm /app/pocketbase/pocketbase.zip
+RUN unzip /tmp/pocketbase.zip -d /tmp/pocketbase
 
-EXPOSE 8090
+RUN chmod +x /tmp/pocketbase/pocketbase
 
-CMD [ "/app/pocketbase/pocketbase", "serve", "--http=0.0.0.0:8090", "--dir=/app/data/pb_data", "--publicDir=/app/data/pb_public" ]
+#############################################
+# Final image
+#############################################
+
+FROM alpine:latest
+LABEL maintainer="Sony AK <sony@sony-ak.com>"
+
+WORKDIR /app/pocketbase
+
+COPY --from=builder /tmp/pocketbase .
+
+ENV DATA_DIR=/app/data/pb_data
+ENV PUBLIC_DIR=/app/data/pb_public
+ENV PORT=8090
+
+EXPOSE ${PORT}
+
+CMD [ "sh", "-c", "./pocketbase serve --http=0.0.0.0:${PORT} --dir=${DATA_DIR} --publicDir=${PUBLIC_DIR}" ]
