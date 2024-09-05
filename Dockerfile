@@ -2,7 +2,7 @@
 
 FROM alpine:latest AS builder
 
-ARG POCKETBASE_VERSION=0.22.17
+ARG POCKETBASE_VERSION=0.22.20
 
 RUN apk add --no-cache \
     ca-certificates \
